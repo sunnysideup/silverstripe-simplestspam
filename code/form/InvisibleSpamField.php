@@ -85,7 +85,7 @@ class InvisibleSpamField extends SpamProtectorField {
 	 *
 	 * @return String
 	 */
-	function FieldHolder() {
+	function FieldHolder($options = array()) {
 		if(is_array(self::$css_rules) && count(self::$css_rules)) {
 			$css = '';
 			foreach(self::$css_rules as $key => $value) {
@@ -119,7 +119,7 @@ HTML;
 	 *
 	 * @return String
 	 */
-	public function Field() {
+	public function Field($options = array()) {
 		$this->initialise();
 		$html = '<input type="text" name="'.$this->fieldNameUsed().'" class="text" />';
 		return $html;
