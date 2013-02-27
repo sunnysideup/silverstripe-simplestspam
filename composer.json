@@ -1,5 +1,5 @@
 {
-	"name": "silverstripe/simplestspam",
+	"name": "sunnysideup/simplestspam",
 	"type": "silverstripe-module",
 	"description": "adds very simple spam protection to your Silverstripe website",
 	"homepage": "http://www.silverstripe-webdevelopment.com",
