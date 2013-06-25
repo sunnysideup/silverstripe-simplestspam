@@ -6,25 +6,23 @@
  *
  **/
 
-class SimplestSpamSiteConfigExtension extends DataObjectDecorator {
+class SimplestSpamSiteConfigExtension extends DataExtension {
 
-	function extraStatics(){
-		return array(
-			"db" => array(
-				"SimplestSpamExplanation" => "Varchar(255)",
-				"SimplestSpamWrongAnswerFieldMessage" => "Varchar(255)",
-				"SimplestSpamWrongAnswerFormMessage" => "Varchar(255)"
-			),
-			"defaults" => array(
-				"SimplestSpamExplanation" => "this question is here to prevent spam",
-				"SimplestSpamWrongAnswerFieldMessage" => "please check anti-spam field to proceed",
-				"SimplestSpamWrongAnswerFormMessage" => "Submission was NOT successful. Please check anti-spam field..."
-			)
-		);
-	}
+		
+	public static $db = array(
+		"SimplestSpamExplanation" => "Varchar(255)",
+		"SimplestSpamWrongAnswerFieldMessage" => "Varchar(255)",
+		"SimplestSpamWrongAnswerFormMessage" => "Varchar(255)"
+	);
+	
+public static $defaults = array(
+		"SimplestSpamExplanation" => "this question is here to prevent spam",
+		"SimplestSpamWrongAnswerFieldMessage" => "please check anti-spam field to proceed",
+		"SimplestSpamWrongAnswerFormMessage" => "Submission was NOT successful. Please check anti-spam field..."
+	);
 
 
-	function updateCMSFields(FieldSet &$fields) {
+	function updateCMSFields(FieldList $fields) {
 		$fields->addFieldToTab("Root.Spam",$this->createTableListField());
 		$fields->addFieldToTab("Root.Spam", new TextField("SimplestSpamExplanation", "Explanation of spam question"));
 		$fields->addFieldToTab("Root.Spam", new TextField("SimplestSpamWrongAnswerFieldMessage", "Error message next to field for wrong spam question answer"));

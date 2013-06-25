@@ -30,7 +30,7 @@ class SimplestSpamField extends SpamProtectorField {
 		self::$has_been_initialised = true;
 	}
 
-	public function Field() {
+	public function Field($properties = array()) {
 		$this->initialise();
 		$html = '<input type="text" name="SimplestSpam_challenge_field" class="text requiredField" />';
 		return $html;
