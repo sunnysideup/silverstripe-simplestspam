@@ -17,7 +17,7 @@ class SimplestSpamFieldQuestion extends DataObject {
 
 	function requireDefaultRecords() {
 		parent::requireDefaultRecords();
-		$simplestSpamFieldQuestion = DataObject::get_one("SimplestSpamFieldQuestion");
+		$simplestSpamFieldQuestion = SimplestSpamFieldQuestion::get()->First();
 		if(!$simplestSpamFieldQuestion) {
 			$simplestSpamFieldQuestion = new SimplestSpamFieldQuestion();
 			$simplestSpamFieldQuestion->Question = 'What is the original name for New Zealand?';

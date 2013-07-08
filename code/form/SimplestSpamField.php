@@ -16,10 +16,10 @@ class SimplestSpamField extends SpamProtectorField {
 	protected function initialise() {
 		if(!self::$has_been_initialised) {
 			if(!count(self::$questions_and_answers)) {
-				self::$questions_and_answers = DataObject::get("SimplestSpamFieldQuestion");
+				self::$questions_and_answers = SimplestSpamFieldQuestion::get();
 			}
 			$questionCount = 0;
-			if(self::$questions_and_answers) {
+			if(self::$questions_and_answers->count()) {
 				$questionCount = self::$questions_and_answers->count();
 			}
 			if(!isset($_REQUEST['SimplestSpam_challenge_field']) && $questionCount) {
@@ -43,7 +43,7 @@ class SimplestSpamField extends SpamProtectorField {
 			return "";
 		}
 		$question = $obj->Question;
-		$siteConfig = DataObject::get_one("SiteConfig");
+		$siteConfig = SiteConfig::get()->First();
 		$explanation = $siteConfig->SimplestSpamExplanation;
 		if($explanation) {
 			$explanation = $explanation;
@@ -68,7 +68,7 @@ HTML;
 	}
 
 	public function validate($validator) {
-		$siteConfig = DataObject::get_one("SiteConfig");
+		$siteConfig = SiteConfig::get()->First();
 		// don't bother querying the SimplestSpam-service if fields were empty
 		if(
 			!isset($_REQUEST['SimplestSpam_challenge_field'])
@@ -80,7 +80,7 @@ HTML;
 				"validation",
 				false
 			);
-			Session::set("FormField.{$this->form->FormName()}.{$this->Name()}", $siteConfig->SimplestSpamWrongAnswerFieldMessage);
+			Session::set("FormField.{$this->form->FormName()}.{$this->getName()}", $siteConfig->SimplestSpamWrongAnswerFieldMessage);
 			$this->form->sessionMessage($siteConfig->SimplestSpamWrongAnswerFormMessage, "bad");
 			return false;
 		}
@@ -98,7 +98,7 @@ HTML;
 				"validation",
 				false
 			);
-			Session::set("FormField.{$this->form->FormName()}.{$this->Name()}", $siteConfig->SimplestSpamWrongAnswerFieldMessage);
+			Session::set("FormField.{$this->form->FormName()}.{$this->getName()}", $siteConfig->SimplestSpamWrongAnswerFieldMessage);
 			$this->form->sessionMessage($siteConfig->SimplestSpamWrongAnswerFormMessage, "bad");
 			return false;
 		}
@@ -114,7 +114,7 @@ HTML;
 		$number = Session::get("SimplestSpamQuestion");
 		if($number > 0) {
 			$number = $number - 1;
-			if($dos = DataObject::get("SimplestSpamFieldQuestion", $where = null, $sort = null, $join = null, $limit = "$number, 1")) {
+			if(($dos = SimplestSpamFieldQuestion::get()->limit(1, $number))->count()) {
 				return $dos->first();
 			}
 			else {
