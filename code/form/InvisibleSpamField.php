@@ -13,7 +13,7 @@ class InvisibleSpamField extends SpamProtectorField {
 	 * you can add your own one here...
 	 * @param Array $a
 	 */
-	protected static $definitions = array(
+	private static $definitions = array(
 		"Email" => array("Class" => "mustenterbecausitisrequired", "Name" => "must_not_enter_email_field", "Label" => "must not enter email here"),
 		"URL" => array("Class" => "urlthatisrequired", "Name" => "must_not_enter_url_field", "Label" => "extra url"),
 		"BLANK" => array("Class" => "leavethisblank", "Name" => "BLANK", "Label" => "Please leave this field blank to stop spam")
@@ -33,7 +33,7 @@ class InvisibleSpamField extends SpamProtectorField {
 	 * set to zero to ignore
 	 * @param Integer $i
 	 **/
-	protected static $min_seconds_completing_form = 10;
+	private static $min_seconds_completing_form = 10;
 		static function set_min_seconds_completing_form($i) {self::$min_seconds_completing_form = $i;}
 		static function get_min_seconds_completing_form() {return self::$min_seconds_completing_form;}
 
@@ -42,14 +42,14 @@ class InvisibleSpamField extends SpamProtectorField {
 	 * set to zero to ignore
 	 * @param Integer $i
 	 **/
-	protected static $max_seconds_completing_form = 600;
+	private static $max_seconds_completing_form = 600;
 		static function set_max_seconds_completing_form($i) {self::$max_seconds_completing_form = $i;}
 		static function get_max_seconds_completing_form() {return self::$max_seconds_completing_form;}
 
 	/**
 	 * also consider: height: 0px; overflow: hidden; etc...
 	 **/
-	protected static $css_rules = array(
+	private static $css_rules = array(
 		"text-indent" => "-2000px"
 	);
 		static function set_css_rules($a) {self::$css_rules = $a;}

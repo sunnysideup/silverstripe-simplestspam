@@ -2,18 +2,18 @@
 
 class SimplestSpamFieldQuestion extends DataObject {
 	//database
-	public static $db = array(
+	private static $db = array(
 		"Question" => "Varchar(100)",
 		"Answer" => "Varchar(50)"
 	);
 	//formatting
-	public static $searchable_fields = array("Question" => "PartialMatchFilter");
+	private static $searchable_fields = array("Question" => "PartialMatchFilter");
 
-	public static $summary_fields = array("Question" => "Question", "Answer" => "Answer");
+	private static $summary_fields = array("Question" => "Question", "Answer" => "Answer");
 
-	public static $singular_name = "Spam filter question";
+	private static $singular_name = "Spam filter question";
 
-	public static $plural_name = "Spam filter questions";
+	private static $plural_name = "Spam filter questions";
 
 	function requireDefaultRecords() {
 		parent::requireDefaultRecords();

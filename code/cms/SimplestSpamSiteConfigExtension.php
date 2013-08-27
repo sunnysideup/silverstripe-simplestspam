@@ -8,14 +8,14 @@
 
 class SimplestSpamSiteConfigExtension extends DataExtension {
 
-		
-	public static $db = array(
+
+	private static $db = array(
 		"SimplestSpamExplanation" => "Varchar(255)",
 		"SimplestSpamWrongAnswerFieldMessage" => "Varchar(255)",
 		"SimplestSpamWrongAnswerFormMessage" => "Varchar(255)"
 	);
-	
-public static $defaults = array(
+
+private static $defaults = array(
 		"SimplestSpamExplanation" => "this question is here to prevent spam",
 		"SimplestSpamWrongAnswerFieldMessage" => "please check anti-spam field to proceed",
 		"SimplestSpamWrongAnswerFormMessage" => "Submission was NOT successful. Please check anti-spam field..."

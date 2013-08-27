@@ -7,9 +7,9 @@
  */
 class SimplestSpamField extends SpamProtectorField {
 
-	protected static $questions_and_answers = array();
+	private static $questions_and_answers = array();
 
-	protected static $has_been_initialised = false;
+	private static $has_been_initialised = false;
 
 	protected $error = '';
 
