@@ -18,15 +18,6 @@ class InvisibleSpamField extends SpamProtectorField {
 		"URL" => array("Class" => "urlthatisrequired", "Name" => "must_not_enter_url_field", "Label" => "extra url"),
 		"BLANK" => array("Class" => "leavethisblank", "Name" => "BLANK", "Label" => "Please leave this field blank to stop spam")
 	);
-		static function set_definitions($a) {self::$definitions = $a;}
-		static function get_definitions() {return self::$definitions;}
-		static function add_definition($key, $class, $name, $label) {
-			self::$definitions[$key] = array(
-				"Class" => $class,
-				"Name" => $name,
-				"Label" => $label
-			);
-		}
 
 	/**
 	 * minimum number of seconds for a user to complete a form
@@ -34,8 +25,6 @@ class InvisibleSpamField extends SpamProtectorField {
 	 * @param Integer $i
 	 **/
 	private static $min_seconds_completing_form = 10;
-		static function set_min_seconds_completing_form($i) {self::$min_seconds_completing_form = $i;}
-		static function get_min_seconds_completing_form() {return self::$min_seconds_completing_form;}
 
 	/**
 	 * maximum number of seconds for a user to complete a form
@@ -43,8 +32,7 @@ class InvisibleSpamField extends SpamProtectorField {
 	 * @param Integer $i
 	 **/
 	private static $max_seconds_completing_form = 600;
-		static function set_max_seconds_completing_form($i) {self::$max_seconds_completing_form = $i;}
-		static function get_max_seconds_completing_form() {return self::$max_seconds_completing_form;}
+
 
 	/**
 	 * also consider: height: 0px; overflow: hidden; etc...
@@ -52,10 +40,7 @@ class InvisibleSpamField extends SpamProtectorField {
 	private static $css_rules = array(
 		"text-indent" => "-2000px"
 	);
-		static function set_css_rules($a) {self::$css_rules = $a;}
-		static function get_css_rules() {return self::$css_rules;}
-		static function add_css_rule($key, $value) {self::$css_rules[$key] = $value;}
-		static function remove_css_rule($key) {unset(self::$css_rules[$key]);}
+
 
 	/**
 	 * returns the label being used
@@ -152,8 +137,8 @@ HTML;
 			$time = time();
 			$oldTime = $_REQUEST["remembermeasstarttime"];
 			$difference = $time - $oldTime;
-			$min = self::get_min_seconds_completing_form();
-			$max = self::get_max_seconds_completing_form();
+			$min = $this->Config()->get("min_seconds_completing_form");
+			$max = $this->Config()->get("max_seconds_completing_form");
 			if($min && $min > $difference) {
 				$validator->validationError(
 					$this->name,
@@ -196,7 +181,7 @@ HTML;
 	protected function usedField(){
 		$key = Session::get("InvisibleSpamFieldKey");
 		if(!$key) {
-			$key = array_rand(self::get_definitions());
+			$key = array_rand($this->Config()->get("definitions"));
 			Session::set("InvisibleSpamFieldKey", $key);
 		}
 		return $key;
