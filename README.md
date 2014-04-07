@@ -1,6 +1,5 @@
-###############################################
 Simplest Spam
-###############################################
+================================================================================
 
 Add basic spam protection to your website using
 a honey pot and or a basic challenge question.
