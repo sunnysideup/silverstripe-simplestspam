@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<index xmlns="http://xml.phpdox.net/src" basedir="/var/www/_modules/simplestspam/trunk">
+  <namespace name="">
+    <class name="SimplestSpamFieldQuestion" src="code/model/SimplestSpamFieldQuestion.php" xml="classes/SimplestSpamFieldQuestion.xml"/>
+    <class name="SimplestSpamProtector" src="code/form/SimplestSpamProtector.php" description="Protecter class to handle spam protection interface" xml="classes/SimplestSpamProtector.xml"/>
+    <class name="InvisibleSpamField" src="code/form/InvisibleSpamField.php" description="Provides an {@link FormField} which allows form to validate for non-bot submissions by giving them a honey pot" xml="classes/InvisibleSpamField.xml"/>
+    <class name="InvisibleSpamProtector" src="code/form/InvisibleSpamProtector.php" description="Protecter class to handle spam protection interface" xml="classes/InvisibleSpamProtector.xml"/>
+    <class name="SimplestSpamSiteConfigExtension" src="code/cms/SimplestSpamSiteConfigExtension.php" description="author nicolaas [at] sunnysideup.co.nz" xml="classes/SimplestSpamSiteConfigExtension.xml"/>
+  </namespace>
+</index>

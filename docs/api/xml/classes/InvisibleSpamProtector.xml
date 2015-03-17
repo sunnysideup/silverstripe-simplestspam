@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="InvisibleSpamProtector" namespace="" name="InvisibleSpamProtector" abstract="false" final="false" start="10" end="44">
+  <file path="/var/www/_modules/simplestspam/trunk/docs/en/phpdox/../../../code/form" file="InvisibleSpamProtector.php" realpath="/var/www/_modules/simplestspam/trunk/code/form/InvisibleSpamProtector.php" size="973" time="2015-03-14T10:22:11+13:00" unixtime="1426281731" sha1="03907d1ec0a11b6b22cf038a33b500b85453c7af" relative="code/form/InvisibleSpamProtector.php"/>
+  <docblock>
+    <description compact="Protecter class to handle spam protection interface"/>
+    <package value="simplest spam field"/>
+    <author value="nicolaas[at] sunnysideup.co.nz"/>
+  </docblock>
+  <implements full="SpamProtector" namespace="" name="SpamProtector"/>
+  <member name="field" type="{unknown}" visibility="protected" line="12"/>
+  <method name="getFieldName" start="19" end="21" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Return the Field that we will use in this protector"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+  <method name="updateForm" start="26" end="28" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="form" byreference="false" type="{unknown}"/>
+    <parameter name="before" byreference="false" type="{unknown}" default="null"/>
+    <parameter name="fieldsToSpamServiceMapping" byreference="false" type="{unknown}" default="null"/>
+  </method>
+  <method name="getFormField" start="36" end="38" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="name" byreference="false" type="{unknown}" default="null"/>
+    <parameter name="title" byreference="false" type="{unknown}" default="null"/>
+    <parameter name="value" byreference="false" type="{unknown}" default="null"/>
+    <parameter name="form" byreference="false" type="{unknown}" default="null"/>
+    <parameter name="rightTitle" byreference="false" type="{unknown}" default="null"/>
+  </method>
+  <method name="sendFeedback" start="40" end="42" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="object" byreference="false" type="{unknown}" default="null"/>
+    <parameter name="feedback" byreference="false" type="string" default="&quot;&quot;"/>
+  </method>
+</class>
