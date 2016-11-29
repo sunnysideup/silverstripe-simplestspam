@@ -3,8 +3,10 @@
     "type": "silverstripe-module",
     "description": "adds very simple spam protection to your Silverstripe website",
     "keywords": [
-        "simplestspam",
-        "silverstripe"
+        "Silverstripe-CMS",
+        "CMS",
+        "Silverstripe",
+        "simplestspam"
     ],
     "license": "Sunny Side Up (BSD-3-Clause and CUSTOM)",
     "authors": [
