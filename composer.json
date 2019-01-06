@@ -1,6 +1,6 @@
 {
     "name": "sunnysideup/simplestspam",
-    "type": "silverstripe-module",
+    "type": "silverstripe-vendormodule",
     "description": "adds very simple spam protection to your Silverstripe website",
     "keywords": [
         "Silverstripe-CMS",
