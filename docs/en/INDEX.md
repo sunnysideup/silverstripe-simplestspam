@@ -33,7 +33,7 @@ Installation Instructions
 
 2. Check out how Spam Protector Module works and follow instructions there....
 
-3. Review configs and add entries to mysite/_config/config.yml
+3. Review configs and add entries to app/_config/config.yml
 (or similar) as necessary.
 In the _config/ folder of this module
 you can usually find some examples of config options (if any).
