@@ -3,6 +3,8 @@
 namespace Sunnysideup\SimplestSpam\Form;
 
 use SpamProtector;
+use Sunnysideup\SimplestSpam\Form\InvisibleSpamField;
+
 
 
 /**
@@ -23,7 +25,7 @@ class InvisibleSpamProtector implements SpamProtector
      */
     public function getFieldName()
     {
-        return 'InvisibleSpamField';
+        return InvisibleSpamField::class;
     }
 
     /**

@@ -2,8 +2,11 @@
 
 namespace Sunnysideup\SimplestSpam\Model;
 
-use DataObject;
-use DB;
+
+
+use SilverStripe\ORM\DB;
+use SilverStripe\ORM\DataObject;
+
 
 
 class SimplestSpamFieldQuestion extends DataObject

@@ -3,9 +3,13 @@
 namespace Sunnysideup\SimplestSpam\Form;
 
 use SpamProtectorField;
-use SimplestSpamFieldQuestion;
-use Controller;
-use SiteConfig;
+
+
+
+use Sunnysideup\SimplestSpam\Model\SimplestSpamFieldQuestion;
+use SilverStripe\Control\Controller;
+use SilverStripe\SiteConfig\SiteConfig;
+
 
 /**
  * Provides an {@link FormField} which allows form to validate for non-bot submissions

@@ -2,10 +2,15 @@
 
 namespace Sunnysideup\SimplestSpam\Cms;
 
-use DataExtension;
-use FieldList;
-use TextField;
+
+
+
 use TableField;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\TextField;
+use Sunnysideup\SimplestSpam\Model\SimplestSpamFieldQuestion;
+use SilverStripe\ORM\DataExtension;
+
 
 
 /**
@@ -50,10 +55,10 @@ class SimplestSpamSiteConfigExtension extends DataExtension
     protected function createTableListField()
     {
         $table = new TableField(
-            $name = "SimplestSpamFieldQuestion",
-            $sourceClass = "SimplestSpamFieldQuestion",
+            $name = SimplestSpamFieldQuestion::class,
+            $sourceClass = SimplestSpamFieldQuestion::class,
             $fieldList = array("Question" => "Question", "Answer" => "Answer"),
-            $fieldTypes = array("Question" => "TextField", "Answer" => "TextField"),
+            $fieldTypes = array("Question" => TextField::class, "Answer" => TextField::class),
             $sourceFilter = null,
             $sourceSort = null,
             $sourceJoin = null
