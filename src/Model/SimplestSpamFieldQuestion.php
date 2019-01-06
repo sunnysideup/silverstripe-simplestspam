@@ -1,5 +1,14 @@
 <?php
 
+namespace Sunnysideup\SimplestSpam\Model;
+
+
+
+use SilverStripe\ORM\DB;
+use SilverStripe\ORM\DataObject;
+
+
+
 class SimplestSpamFieldQuestion extends DataObject
 {
     //database

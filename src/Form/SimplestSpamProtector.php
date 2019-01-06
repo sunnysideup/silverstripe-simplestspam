@@ -1,5 +1,12 @@
 <?php
 
+namespace Sunnysideup\SimplestSpam\Form;
+
+use SpamProtector;
+use Sunnysideup\SimplestSpam\Form\SimplestSpamField;
+
+
+
 /**
  * Protecter class to handle spam protection interface
  *
@@ -17,7 +24,7 @@ class SimplestSpamProtector implements SpamProtector
      */
     public function getFieldName()
     {
-        return 'SimplestSpamField';
+        return SimplestSpamField::class;
     }
 
     /**
@@ -25,7 +32,7 @@ class SimplestSpamProtector implements SpamProtector
      */
     public function updateForm($form, $before=null, $fieldsToSpamServiceMapping=null)
     {
-        $this->field = $this->getFormField("SimplestSpamField", "Please answer this question to prove you are a real human", null, $form);
+        $this->field = $this->getFormField(SimplestSpamField::class, "Please answer this question to prove you are a real human", null, $form);
         if ($before && $form->Fields()->fieldByName($before)) {
             $form->Fields()->insertBefore($this->field, $before);
         } else {

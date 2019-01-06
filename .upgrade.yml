@@ -1,0 +1,7 @@
+mappings:
+  SimplestSpamSiteConfigExtension: Sunnysideup\SimplestSpam\Cms\SimplestSpamSiteConfigExtension
+  SimplestSpamFieldQuestion: Sunnysideup\SimplestSpam\Model\SimplestSpamFieldQuestion
+  SimplestSpamField: Sunnysideup\SimplestSpam\Form\SimplestSpamField
+  InvisibleSpamProtector: Sunnysideup\SimplestSpam\Form\InvisibleSpamProtector
+  InvisibleSpamField: Sunnysideup\SimplestSpam\Form\InvisibleSpamField
+  SimplestSpamProtector: Sunnysideup\SimplestSpam\Form\SimplestSpamProtector

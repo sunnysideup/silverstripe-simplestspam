@@ -1,11 +1,33 @@
 <?php
 
+namespace Sunnysideup\SimplestSpam\Cms;
+
+
+
+
+use TableField;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\TextField;
+use Sunnysideup\SimplestSpam\Model\SimplestSpamFieldQuestion;
+use SilverStripe\ORM\DataExtension;
+
+
+
 /**
  *@author nicolaas [at] sunnysideup.co.nz
  *
  *
  **/
 
+
+/**
+  * ### @@@@ START REPLACEMENT @@@@ ###
+  * WHY: upgrade to SS4
+  * OLD:  extends DataExtension (ignore case)
+  * NEW:  extends DataExtension (COMPLEX)
+  * EXP: Check for use of $this->anyVar and replace with $this->anyVar[$this->owner->ID] or consider turning the class into a trait
+  * ### @@@@ STOP REPLACEMENT @@@@ ###
+  */
 class SimplestSpamSiteConfigExtension extends DataExtension
 {
     private static $db = array(
@@ -33,10 +55,10 @@ class SimplestSpamSiteConfigExtension extends DataExtension
     protected function createTableListField()
     {
         $table = new TableField(
-            $name = "SimplestSpamFieldQuestion",
-            $sourceClass = "SimplestSpamFieldQuestion",
+            $name = SimplestSpamFieldQuestion::class,
+            $sourceClass = SimplestSpamFieldQuestion::class,
             $fieldList = array("Question" => "Question", "Answer" => "Answer"),
-            $fieldTypes = array("Question" => "TextField", "Answer" => "TextField"),
+            $fieldTypes = array("Question" => TextField::class, "Answer" => TextField::class),
             $sourceFilter = null,
             $sourceSort = null,
             $sourceJoin = null

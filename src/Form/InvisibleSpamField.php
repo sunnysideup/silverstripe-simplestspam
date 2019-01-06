@@ -1,4 +1,14 @@
 <?php
+
+namespace Sunnysideup\SimplestSpam\Form;
+
+use SpamProtectorField;
+
+
+use SilverStripe\View\Requirements;
+use SilverStripe\Control\Controller;
+
+
 /**
  * Provides an {@link FormField} which allows form to validate for non-bot submissions
  * by giving them a honey pot
@@ -186,10 +196,28 @@ HTML;
      */
     protected function usedField()
     {
-        $key = Session::get("InvisibleSpamFieldKey");
+
+/**
+  * ### @@@@ START REPLACEMENT @@@@ ###
+  * WHY: upgrade to SS4
+  * OLD: Session:: (case sensitive)
+  * NEW: Controller::curr()->getRequest()->getSession()-> (COMPLEX)
+  * EXP: If THIS is a controller than you can write: $this->getRequest(). You can also try to access the HTTPRequest directly. 
+  * ### @@@@ STOP REPLACEMENT @@@@ ###
+  */
+        $key = Controller::curr()->getRequest()->getSession()->get("InvisibleSpamFieldKey");
         if (!$key) {
             $key = array_rand($this->Config()->get("definitions"));
-            Session::set("InvisibleSpamFieldKey", $key);
+
+/**
+  * ### @@@@ START REPLACEMENT @@@@ ###
+  * WHY: upgrade to SS4
+  * OLD: Session:: (case sensitive)
+  * NEW: Controller::curr()->getRequest()->getSession()-> (COMPLEX)
+  * EXP: If THIS is a controller than you can write: $this->getRequest(). You can also try to access the HTTPRequest directly. 
+  * ### @@@@ STOP REPLACEMENT @@@@ ###
+  */
+            Controller::curr()->getRequest()->getSession()->set("InvisibleSpamFieldKey", $key);
         }
         return $key;
     }

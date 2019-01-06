@@ -1,5 +1,12 @@
 <?php
 
+namespace Sunnysideup\SimplestSpam\Form;
+
+use SpamProtector;
+use Sunnysideup\SimplestSpam\Form\InvisibleSpamField;
+
+
+
 /**
  * Protecter class to handle spam protection interface
  *
@@ -18,7 +25,7 @@ class InvisibleSpamProtector implements SpamProtector
      */
     public function getFieldName()
     {
-        return 'InvisibleSpamField';
+        return InvisibleSpamField::class;
     }
 
     /**
