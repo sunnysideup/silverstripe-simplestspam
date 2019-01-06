@@ -1,4 +1,12 @@
 <?php
+
+namespace Sunnysideup\SimplestSpam\Form;
+
+use SpamProtectorField;
+use SimplestSpamFieldQuestion;
+use Controller;
+use SiteConfig;
+
 /**
  * Provides an {@link FormField} which allows form to validate for non-bot submissions
  * by giving them a challenge answer a question

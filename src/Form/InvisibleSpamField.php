@@ -1,4 +1,11 @@
 <?php
+
+namespace Sunnysideup\SimplestSpam\Form;
+
+use SpamProtectorField;
+use Requirements;
+use Controller;
+
 /**
  * Provides an {@link FormField} which allows form to validate for non-bot submissions
  * by giving them a honey pot

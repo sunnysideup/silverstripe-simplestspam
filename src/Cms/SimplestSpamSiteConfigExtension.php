@@ -1,5 +1,13 @@
 <?php
 
+namespace Sunnysideup\SimplestSpam\Cms;
+
+use DataExtension;
+use FieldList;
+use TextField;
+use TableField;
+
+
 /**
  *@author nicolaas [at] sunnysideup.co.nz
  *

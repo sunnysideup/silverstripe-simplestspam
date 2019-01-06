@@ -1,5 +1,10 @@
 <?php
 
+namespace Sunnysideup\SimplestSpam\Form;
+
+use SpamProtector;
+
+
 /**
  * Protecter class to handle spam protection interface
  *
