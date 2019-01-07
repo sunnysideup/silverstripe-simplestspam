@@ -2,8 +2,6 @@
 
 namespace Sunnysideup\SimplestSpam;
 
-
-
 /**
  * developed by www.sunnysideup.co.nz
 **/

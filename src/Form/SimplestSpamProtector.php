@@ -2,10 +2,8 @@
 
 namespace Sunnysideup\SimplestSpam\Form;
 
-use SpamProtector;
+use SilverStripe\SpamProtection\SpamProtector;
 use Sunnysideup\SimplestSpam\Form\SimplestSpamField;
-
-
 
 /**
  * Protecter class to handle spam protection interface
@@ -42,11 +40,9 @@ class SimplestSpamProtector implements SpamProtector
     }
 
 
-    /*
-    function setFieldMapping($fieldToPostTitle, $fieldsToPostBody=null, $fieldToAuthorName=null, $fieldToAuthorUrl=null, $fieldToAuthorEmail=null, $fieldToAuthorOpenId=null) {
-
+    public function setFieldMapping($fieldMapping)
+    {
     }
-    */
 
     public function getFormField($name = null, $title = null, $value = null, $form = null, $rightTitle = null)
     {

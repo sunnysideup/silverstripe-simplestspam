@@ -2,12 +2,11 @@
 
 namespace Sunnysideup\SimplestSpam\Form;
 
-use SpamProtectorField;
+use SilverStripe\SpamProtection\EditableSpamProtectionField;
 
 
 use SilverStripe\View\Requirements;
 use SilverStripe\Control\Controller;
-
 
 /**
  * Provides an {@link FormField} which allows form to validate for non-bot submissions
@@ -15,9 +14,9 @@ use SilverStripe\Control\Controller;
  *
  * @module SimplestSpam
  */
-class InvisibleSpamField extends SpamProtectorField
+class InvisibleSpamField extends EditableSpamProtectionField
 {
-
+    private static $table_name = 'InvisibleSpamField';
 
     /**
      * list of fields that can be placed as honey pots
@@ -106,10 +105,10 @@ class InvisibleSpamField extends SpamProtectorField
         $time = time();
         return <<<HTML
 <div id="$Name" class="$Class">
-	<label>$Title</label>
-	<div class="middleColumn">
-		{$Field}
-	</div>
+    <label>$Title</label>
+    <div class="middleColumn">
+        {$Field}
+    </div>
 </div>
 <input type="hidden" value="$time" name="remembermeasstarttime" />
 HTML;
@@ -126,12 +125,16 @@ HTML;
         return $html;
     }
 
+    public function setFieldMapping()
+    {
+    }
     /**
      *
      *
      */
-    public function validate($validator)
+    public function validate()
     {
+        $validator = parent::validate();
         // don't bother querying the SimplestSpam-service if fields were empty
         if (!isset($_REQUEST[$this->fieldNameUsed()]) || $_REQUEST[$this->fieldNameUsed()]) {
             $validator->validationError(
@@ -202,21 +205,21 @@ HTML;
   * WHY: upgrade to SS4
   * OLD: Session:: (case sensitive)
   * NEW: Controller::curr()->getRequest()->getSession()-> (COMPLEX)
-  * EXP: If THIS is a controller than you can write: $this->getRequest(). You can also try to access the HTTPRequest directly. 
+  * EXP: If THIS is a controller than you can write: $this->getRequest(). You can also try to access the HTTPRequest directly.
   * ### @@@@ STOP REPLACEMENT @@@@ ###
   */
         $key = Controller::curr()->getRequest()->getSession()->get("InvisibleSpamFieldKey");
         if (!$key) {
             $key = array_rand($this->Config()->get("definitions"));
 
-/**
-  * ### @@@@ START REPLACEMENT @@@@ ###
-  * WHY: upgrade to SS4
-  * OLD: Session:: (case sensitive)
-  * NEW: Controller::curr()->getRequest()->getSession()-> (COMPLEX)
-  * EXP: If THIS is a controller than you can write: $this->getRequest(). You can also try to access the HTTPRequest directly. 
-  * ### @@@@ STOP REPLACEMENT @@@@ ###
-  */
+            /**
+              * ### @@@@ START REPLACEMENT @@@@ ###
+              * WHY: upgrade to SS4
+              * OLD: Session:: (case sensitive)
+              * NEW: Controller::curr()->getRequest()->getSession()-> (COMPLEX)
+              * EXP: If THIS is a controller than you can write: $this->getRequest(). You can also try to access the HTTPRequest directly.
+              * ### @@@@ STOP REPLACEMENT @@@@ ###
+              */
             Controller::curr()->getRequest()->getSession()->set("InvisibleSpamFieldKey", $key);
         }
         return $key;

@@ -2,15 +2,13 @@
 
 namespace Sunnysideup\SimplestSpam\Model;
 
-
-
 use SilverStripe\ORM\DB;
 use SilverStripe\ORM\DataObject;
 
-
-
 class SimplestSpamFieldQuestion extends DataObject
 {
+    private static $table_name = 'SimplestSpamFieldQuestion';
+
     //database
     private static $db = array(
         "Question" => "Varchar(100)",

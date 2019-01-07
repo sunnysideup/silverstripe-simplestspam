@@ -2,16 +2,11 @@
 
 namespace Sunnysideup\SimplestSpam\Cms;
 
-
-
-
 use TableField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
 use Sunnysideup\SimplestSpam\Model\SimplestSpamFieldQuestion;
 use SilverStripe\ORM\DataExtension;
-
-
 
 /**
  *@author nicolaas [at] sunnysideup.co.nz

@@ -2,14 +2,12 @@
 
 namespace Sunnysideup\SimplestSpam\Form;
 
-use SpamProtectorField;
-
-
+use SilverStripe\Forms\FormField;
+use SilverStripe\SpamProtection\EditableSpamProtectionField;
 
 use Sunnysideup\SimplestSpam\Model\SimplestSpamFieldQuestion;
 use SilverStripe\Control\Controller;
 use SilverStripe\SiteConfig\SiteConfig;
-
 
 /**
  * Provides an {@link FormField} which allows form to validate for non-bot submissions
@@ -17,8 +15,10 @@ use SilverStripe\SiteConfig\SiteConfig;
  *
  * @module SimplestSpam
  */
-class SimplestSpamField extends SpamProtectorField
+class SimplestSpamField extends EditableSpamProtectionField
 {
+    private static $table_name = 'SimplestSpamField';
+
     private static $questions_and_answers = array();
 
     private static $has_been_initialised = false;
@@ -38,14 +38,14 @@ class SimplestSpamField extends SpamProtectorField
             if (!isset($_REQUEST['SimplestSpam_challenge_field']) && $questionCount) {
                 $randomNumber = rand(0, $questionCount - 1);
 
-/**
-  * ### @@@@ START REPLACEMENT @@@@ ###
-  * WHY: upgrade to SS4
-  * OLD: Session:: (case sensitive)
-  * NEW: Controller::curr()->getRequest()->getSession()-> (COMPLEX)
-  * EXP: If THIS is a controller than you can write: $this->getRequest(). You can also try to access the HTTPRequest directly. 
-  * ### @@@@ STOP REPLACEMENT @@@@ ###
-  */
+                /**
+                  * ### @@@@ START REPLACEMENT @@@@ ###
+                  * WHY: upgrade to SS4
+                  * OLD: Session:: (case sensitive)
+                  * NEW: Controller::curr()->getRequest()->getSession()-> (COMPLEX)
+                  * EXP: If THIS is a controller than you can write: $this->getRequest(). You can also try to access the HTTPRequest directly.
+                  * ### @@@@ STOP REPLACEMENT @@@@ ###
+                  */
                 Controller::curr()->getRequest()->getSession()->set("SimplestSpamQuestion", $randomNumber + 1); // adding one to make it easier to work out if anything has been entered, i.e. 0 could be nothing or first question
             }
         }
@@ -59,7 +59,7 @@ class SimplestSpamField extends SpamProtectorField
         return $html;
     }
 
-    public function FieldHolder()
+    public function FieldHolder($properties = [])
     {
         $this->initialise();
         $obj = $this->getQuestionAnswerObject();
@@ -82,11 +82,11 @@ class SimplestSpamField extends SpamProtectorField
         $messageBlock = (!empty($Message)) ? "<span class=\"message $MessageType\">$Message</span>" : "";
         return <<<HTML
 <div id="$Name" class="field $Type $extraClass">
-	<label class="left spamquestion">{$question} </label>
-	<div class="middleColumn">
-		{$Field}
-		<label class="required">{$explanation} {$messageBlock}</label>
-	</div>
+    <label class="left spamquestion">{$question} </label>
+    <div class="middleColumn">
+        {$Field}
+        <label class="required">{$explanation} {$messageBlock}</label>
+    </div>
 </div>
 HTML;
     }
@@ -106,14 +106,14 @@ HTML;
                 false
             );
 
-/**
-  * ### @@@@ START REPLACEMENT @@@@ ###
-  * WHY: upgrade to SS4
-  * OLD: Session:: (case sensitive)
-  * NEW: Controller::curr()->getRequest()->getSession()-> (COMPLEX)
-  * EXP: If THIS is a controller than you can write: $this->getRequest(). You can also try to access the HTTPRequest directly. 
-  * ### @@@@ STOP REPLACEMENT @@@@ ###
-  */
+            /**
+              * ### @@@@ START REPLACEMENT @@@@ ###
+              * WHY: upgrade to SS4
+              * OLD: Session:: (case sensitive)
+              * NEW: Controller::curr()->getRequest()->getSession()-> (COMPLEX)
+              * EXP: If THIS is a controller than you can write: $this->getRequest(). You can also try to access the HTTPRequest directly.
+              * ### @@@@ STOP REPLACEMENT @@@@ ###
+              */
             Controller::curr()->getRequest()->getSession()->set("FormField.{$this->form->FormName()}.{$this->getName()}", $siteConfig->SimplestSpamWrongAnswerFieldMessage);
             $this->form->sessionMessage($siteConfig->SimplestSpamWrongAnswerFormMessage, "bad");
             return false;
@@ -133,14 +133,14 @@ HTML;
                 false
             );
 
-/**
-  * ### @@@@ START REPLACEMENT @@@@ ###
-  * WHY: upgrade to SS4
-  * OLD: Session:: (case sensitive)
-  * NEW: Controller::curr()->getRequest()->getSession()-> (COMPLEX)
-  * EXP: If THIS is a controller than you can write: $this->getRequest(). You can also try to access the HTTPRequest directly. 
-  * ### @@@@ STOP REPLACEMENT @@@@ ###
-  */
+            /**
+              * ### @@@@ START REPLACEMENT @@@@ ###
+              * WHY: upgrade to SS4
+              * OLD: Session:: (case sensitive)
+              * NEW: Controller::curr()->getRequest()->getSession()-> (COMPLEX)
+              * EXP: If THIS is a controller than you can write: $this->getRequest(). You can also try to access the HTTPRequest directly.
+              * ### @@@@ STOP REPLACEMENT @@@@ ###
+              */
             Controller::curr()->getRequest()->getSession()->set("FormField.{$this->form->FormName()}.{$this->getName()}", $siteConfig->SimplestSpamWrongAnswerFieldMessage);
             $this->form->sessionMessage($siteConfig->SimplestSpamWrongAnswerFormMessage, "bad");
             return false;
@@ -157,14 +157,14 @@ HTML;
     {
         $this->initialise();
 
-/**
-  * ### @@@@ START REPLACEMENT @@@@ ###
-  * WHY: upgrade to SS4
-  * OLD: Session:: (case sensitive)
-  * NEW: Controller::curr()->getRequest()->getSession()-> (COMPLEX)
-  * EXP: If THIS is a controller than you can write: $this->getRequest(). You can also try to access the HTTPRequest directly. 
-  * ### @@@@ STOP REPLACEMENT @@@@ ###
-  */
+        /**
+          * ### @@@@ START REPLACEMENT @@@@ ###
+          * WHY: upgrade to SS4
+          * OLD: Session:: (case sensitive)
+          * NEW: Controller::curr()->getRequest()->getSession()-> (COMPLEX)
+          * EXP: If THIS is a controller than you can write: $this->getRequest(). You can also try to access the HTTPRequest directly.
+          * ### @@@@ STOP REPLACEMENT @@@@ ###
+          */
         $number = Controller::curr()->getRequest()->getSession()->get("SimplestSpamQuestion");
         if ($number > 0) {
             $number = $number - 1;
