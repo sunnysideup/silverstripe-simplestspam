@@ -199,27 +199,9 @@ HTML;
      */
     protected function usedField()
     {
-
-/**
-  * ### @@@@ START REPLACEMENT @@@@ ###
-  * WHY: upgrade to SS4
-  * OLD: Session:: (case sensitive)
-  * NEW: Controller::curr()->getRequest()->getSession()-> (COMPLEX)
-  * EXP: If THIS is a controller than you can write: $this->getRequest(). You can also try to access the HTTPRequest directly.
-  * ### @@@@ STOP REPLACEMENT @@@@ ###
-  */
         $key = Controller::curr()->getRequest()->getSession()->get("InvisibleSpamFieldKey");
         if (!$key) {
             $key = array_rand($this->Config()->get("definitions"));
-
-            /**
-              * ### @@@@ START REPLACEMENT @@@@ ###
-              * WHY: upgrade to SS4
-              * OLD: Session:: (case sensitive)
-              * NEW: Controller::curr()->getRequest()->getSession()-> (COMPLEX)
-              * EXP: If THIS is a controller than you can write: $this->getRequest(). You can also try to access the HTTPRequest directly.
-              * ### @@@@ STOP REPLACEMENT @@@@ ###
-              */
             Controller::curr()->getRequest()->getSession()->set("InvisibleSpamFieldKey", $key);
         }
         return $key;
