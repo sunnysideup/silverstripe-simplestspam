@@ -1,0 +1,16 @@
+# to be completed
+InvisibleSpamField:
+
+    definitions:
+        "Email:
+            "Class" : "mustenterbecausitisrequired"
+            "Name" : "must_not_enter_email_field"
+            "Label" : "must not enter email here"
+        "URL" :
+            "Class" : "urlthatisrequired"
+            "Name": "must_not_enter_url_field"
+            "Label": "extra url"
+        "BLANK":
+            "Class": "leavethisblank"
+            "Name": "BLANK"
+            "Label": "Please leave this field blank to stop spam"
