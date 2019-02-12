@@ -21,9 +21,4 @@
         "composer/installers": "^1.6",
         "silverstripe/recipe-cms": "^4.2"
     },
-    "extra": {
-        "expose": [
-            "client"
-        ]
-    }
 }
